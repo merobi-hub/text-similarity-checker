@@ -1,6 +1,5 @@
 from sentence_transformers import SentenceTransformer
 from tokenizer import split_into_sentences
-import rich_click as click
 from dylan_lecture import dylan_lec
 from moby_dick_sparknotes import spark_notes
 from numpy.typing import NDArray
