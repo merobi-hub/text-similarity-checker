@@ -2,7 +2,7 @@
 
 This tool uses the [SBERT](https://sbert.net/index.html) SentenceTransformer and [NLTK](https://www.nltk.org/) Punkt Sentence Tokenizer to compare two texts for similarity.
 
-It outputs a sorted list of sentence pairs with similarity scores for each.
+It outputs a sorted list of high-scoring sentence pairs with scores for each, the most similar pair, and the similarity index (average similarity).
 
 ### To use
 
