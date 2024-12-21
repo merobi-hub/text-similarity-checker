@@ -18,7 +18,7 @@ Run the `text_similarity_checker` script from the command line:
 python3 text_similarity_checker.py
 ```
 
-:info: By default, the script compares Bob Dylan's [rather infamous Nobel lecture](https://slate.com/culture/2017/06/did-bob-dylan-take-from-sparknotes-for-his-nobel-lecture.html) to its alleged source. Add your own texts for comparison as Python strings to the project's root directory. You will then need to modify `text_similarity_checker` slightly to use them. See the script for details.
+> [!NOTE] By default, the script compares Bob Dylan's [rather infamous Nobel lecture](https://slate.com/culture/2017/06/did-bob-dylan-take-from-sparknotes-for-his-nobel-lecture.html) to its alleged source. Add your own texts for comparison as Python strings to the project's root directory. You will then need to modify `text_similarity_checker` slightly to use them. See the script for details.
 
 ### Status
 
