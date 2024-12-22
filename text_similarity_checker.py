@@ -110,9 +110,9 @@ class SimilarityChecker:
 def main():
 	check = SimilarityChecker(TEXT1, TEXT2)
 	check.split_texts()
-	# check.encode_texts()
-	# check.produce_similarities()
-	# check.compare_texts()
+	check.encode_texts()
+	check.produce_similarities()
+	check.compare_texts()
 	check.string_compare()
 
 if __name__ == "__main__":
