@@ -1,10 +1,12 @@
 from sentence_transformers import SentenceTransformer
 from tokenizer import split_into_sentences
-from dylan_lecture import dylan_lec
-from moby_dick_sparknotes import spark_notes
+from text1 import dylan_lec
+from text2 import spark_notes
 from numpy.typing import NDArray
 import torch
 from torch import tensor
+
+from difflib import SequenceMatcher
 
 # Texts (strings) for comparison. Import from root then modify these definitions.
 TEXT1 = dylan_lec
@@ -69,12 +71,49 @@ class SimilarityChecker:
 		print("===================")
 		print(f"Similarity index: ", agg_score / num_scores)
 
+	def string_compare(self):
+		high_scorers = []
+		high_score = 0
+		high_scoring_match = ()
+		num_scores = 0
+		agg_score = 0
+		for sentence1 in self.sentences1:
+			for sentence2 in self.sentences2:
+				score = SequenceMatcher(None, sentence1, sentence2).ratio()
+				num_scores += 1
+				agg_score += score
+				if score > high_score:
+					high_score = score
+					high_scoring_match = (sentence1, sentence2)
+				if score > 0.5:
+					high_scorers.append((sentence1, sentence2, score))
+
+		print("===================")
+		print("===================")
+		print("Closest match:")
+		print(f"Dylan: {high_scoring_match[0]}") 
+		print(f"Spark: {high_scoring_match[1]}")
+		print(f"Score: {high_score:.4f}")
+
+		print("===================")
+		print("High scorers:")
+		for item in sorted(high_scorers, key=lambda x: x[2], reverse=True):
+			print("Dylan: ", item[0])
+			print("Spark: ", item[1])
+			print("Score: ", item[2])
+			print("---------------")
+
+		print("===================")
+		print("===================")
+		print(f"Similarity index: ", agg_score / num_scores)
+
 def main():
 	check = SimilarityChecker(TEXT1, TEXT2)
 	check.split_texts()
-	check.encode_texts()
-	check.produce_similarities()
-	check.compare_texts()
+	# check.encode_texts()
+	# check.produce_similarities()
+	# check.compare_texts()
+	check.string_compare()
 
 if __name__ == "__main__":
     main()
